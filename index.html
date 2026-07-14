@@ -367,8 +367,9 @@
     <div class="card api" style="margin-bottom:16px">
       <div class="apirow"><code>/config</code><span class="m get">GET</span><span>时间·7层奖励·份数·奖池·预算·星星上限90</span></div>
       <div class="apirow"><code>/user-status</code><span class="m get">GET</span><span>资格·星星余额·剩余绑定次数·登录平台·实验组别</span></div>
-      <div class="apirow"><code>/recommend-list</code><span class="m get">GET</span><span>推荐好友（含 friendReturnStar 等字段）</span></div>
+      <div class="apirow"><code>/recommend-list</code><span class="m get">GET</span><span>推荐好友（取最新每日名单批次；含 friendReturnStar）</span></div>
       <div class="apirow"><code>/code/bind</code><span class="m post">POST</span><span>绑定（流失+首绑+限1码+次数；名单外→5★保底）</span></div>
+      <div class="apirow"><code>/bind/verify</code><span class="m post">POST</span><span>发放前三重绑定关系校验，全通过才发放</span></div>
       <div class="apirow"><code>/star/claim</code><span class="m post">POST</span><span>领星星（推荐卡领取后好友移除；累计封顶90★）</span></div>
       <div class="apirow"><code>/redpacket/claim</code><span class="m post">POST</span><span>领现金/Q币（本人一半，QQ发Q币/微信发现金）</span></div>
       <div class="apirow"><code>/mall/exchange</code><span class="m post">POST</span><span>星星兑换（二次确认后调用，校验单人限次）</span></div>
@@ -389,6 +390,26 @@
           <code>act_pv</code> → <code>recall_click</code> → <code>invite_share_result</code> → <code>code_auto_detect</code> → <code>bind_result</code> → <code>help_success_popup</code> → <code>friend_claim_result</code></p>
         <p style="font-size:12px;color:var(--tx3);margin-top:8px">公共字段 uin/roleId/platform/experimentGroup/ts；结果类必带 resultCode。</p>
       </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="sh" style="margin-bottom:12px"><h2 style="font-size:15px">流失名单每日增量存储 & 发放前三重校验</h2></div>
+      <div class="grid2">
+        <div>
+          <div class="tagp blue" style="margin-bottom:8px">① 名单每日增量落库</div>
+          <p style="font-size:12.5px;color:var(--tx2);line-height:1.85">数据侧<b>每天 T+1 刷新</b>流失名单，开发按天存快照（<code>lost_friend_daily</code>，主键 <code>batch_date+host+friend</code>），与前日 diff 标记 <code>is_new</code>；名单为活动期累计可召回池，<b>历史不删除</b>（今天不在推荐、明天回归仍可绑定走保底）；推荐列表取最新批次，校验可按 <code>batch_date</code> 回溯。</p>
+        </div>
+        <div>
+          <div class="tagp gold" style="margin-bottom:8px">② 发放前三重绑定校验</div>
+          <p style="font-size:12.5px;color:var(--tx2);line-height:1.7">被邀请方输入邀请码后，依次核对下面三种关系，<b>全部通过才发现金/Q币</b>：</p>
+        </div>
+      </div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">① 好友绑定关系</b>是否有效关系链好友 + 是否满足流失定义</div>
+        <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">② 邀请码绑定关系</b>邀请码归属 + 首次绑定 + 仅绑1码 + 邀请人次数未满30</div>
+        <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">③ 现金-邀请码关系</b>应发金额/层级份数有库存 + 预算未熔断 + bindId 与金额一一对应</div>
+      </div>
+      <div class="callout key" style="margin-top:12px;font-size:12.5px"><div class="ci">✓</div><div><b>发放闭环：</b>①②③全通过 → 确认 <code>bindId</code> → 按 loginPlatform 发 Q币/现金 → 记账落流水；状态机 <span class="tagp blue" style="font-size:11px">bound</span> → <span class="tagp gold" style="font-size:11px">verified</span> → <span class="tagp green" style="font-size:11px">paid</span>，同一 bindId 幂等，任一校验失败拦截并记 failType。</div></div>
     </div>
   </section>
 
