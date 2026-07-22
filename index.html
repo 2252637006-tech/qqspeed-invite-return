@@ -386,10 +386,14 @@
           <code>status</code> pending→returned→claimed</p>
       </div>
       <div class="card">
-        <div class="sh" style="margin-bottom:10px"><h2 style="font-size:15px">关键埋点（召回漏斗）</h2></div>
-        <p style="font-size:12px;color:var(--tx2);line-height:1.85">
+        <div class="sh" style="margin-bottom:10px"><h2 style="font-size:15px">关键埋点（三条漏斗）</h2></div>
+        <p style="font-size:12px;color:var(--tx2);line-height:1.85"><b style="color:var(--blue)">召回：</b>
           <code>act_pv</code> → <code>recall_click</code> → <code>invite_share_result</code> → <code>code_auto_detect</code> → <code>bind_result</code> → <code>help_success_popup</code> → <code>friend_claim_result</code></p>
-        <p style="font-size:12px;color:var(--tx3);margin-top:8px">公共字段 uin/roleId/platform/experimentGroup/ts；结果类必带 resultCode。</p>
+        <p style="font-size:12px;color:var(--tx2);line-height:1.85;margin-top:6px"><b style="color:var(--red)">现金兑换：</b>
+          <code>redpacket_detail_open</code> → <code>cash_exchange</code>(click→confirm→result)</p>
+        <p style="font-size:12px;color:var(--tx2);line-height:1.85;margin-top:6px"><b style="color:var(--gold)">星星兑换道具：</b>
+          <code>mall_expose</code> → <code>star_goods_exchange</code>(click→confirm→result)，可按 <code>goodsId/goodsType</code> 看各道具兑换转化</p>
+        <p style="font-size:12px;color:var(--tx3);margin-top:8px">公共字段 uin/roleId/platform/experimentGroup/ts；结果类必带 resultCode。新增 <code>cash_exchange</code>（含 amount/platform/rewardType）、<code>star_goods_exchange</code>（含 goodsName/goodsType/price/remainStar）。</p>
       </div>
     </div>
 
