@@ -405,6 +405,13 @@
           <div style="margin-top:10px;font-size:13.5px;font-weight:500;color:var(--tx)">无推荐好友时的空态</div>
           <div style="margin-top:6px;font-size:12.5px;color:var(--tx2);line-height:1.7">主标题「<b>暂无可推荐的召回好友</b>」+ 副文案「别担心~ 把你的专属口令分享给<b style="color:var(--blue)">任意流失好友</b>，好友回归后<b style="color:var(--gold)">你和 TA 都能各得 5★</b>」+ 引导「<b style="color:var(--red)">去「口令邀请」喊好友回归 →</b>」；配 <b>❓ 图标</b>（带 ★ 角标）填充右侧空白区，避免空旷。</div>
         </div>
+        <div class="sh" style="margin:18px 0 10px"><h2 style="font-size:15px">顶部横幅标题 · 主态三选一</h2></div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="callout key" style="font-size:12.5px"><div class="ci">¥</div><div><b>① 有现金好友</b>（列表含现金/Q币型）→ <b style="color:var(--red)">邀请 6 名好友回归，最高得 47 元现金红包</b>（沿用交互稿；数字随可得金额配置）</div></div>
+          <div class="callout" style="font-size:12.5px;border-color:var(--gold)"><div class="ci" style="color:var(--gold)">★</div><div><b>② 只有星星好友</b>（无现金型、仅星星型）→ <b style="color:var(--gold)">邀请 X 名好友回归，最高得 X ★</b>（名数/★数占位，随可得星星数配置）</div></div>
+          <div class="callout" style="font-size:12.5px;border-color:var(--blue)"><div class="ci" style="color:var(--blue)">?</div><div><b>③ 什么好友都没有</b>（friendCount=0，配空态）→ <b style="color:var(--blue)">邀请流失车手回归，双方各得 5★</b>（通用标题）</div></div>
+        </div>
+        <p style="font-size:12px;color:var(--tx3);margin-top:8px">横幅标题由 <code>recommend-list</code> 返回的好友构成驱动：有现金型→①，仅星星型→②，空→③；文案数字后台可配置。</p>
       </div>
       <div class="card">
         <div class="sh" style="margin-bottom:12px"><h2 style="font-size:15px">兑换按钮 · 三态</h2></div>
