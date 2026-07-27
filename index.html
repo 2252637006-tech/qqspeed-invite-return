@@ -264,14 +264,14 @@
     </div>
 
     <div class="sh" style="margin-top:26px"><h2 style="font-size:16px">AB 实验 · 现金发放三方案</h2><div class="sub">流失用户 5 层 × 每层 3 档</div></div>
-    <div class="callout key" style="font-size:12.5px;margin-bottom:14px"><div class="ci">A/B</div><div>流失用户分 <b>5 层</b>，每层 <b>3 个现金档位</b>；用 <b class="hl">基准 / 0.8X 降本 / 1.2X 加码</b> 三套现金强度做 A/B 实验，按 <code>experimentGroup</code> 稳定分流（同 openid 命中同一臂、不跳臂），寻找 <b>ROI 回本约束下回流人数最大</b>的最优现金系数。第 1 层不发现金、三臂一致。</div></div>
+    <div class="callout key" style="font-size:12.5px;margin-bottom:14px"><div class="ci">A/B</div><div>流失用户分 <b>5 层</b>，每层 <b>3 个现金档位</b>；用 <b class="hl">基准 / 0.8X 降本 / 1.2X 加码</b> 三套现金强度做 A/B 实验，按 <code>experimentGroup</code> 稳定分流（同 openid 命中同一臂、不跳臂），寻找 <b>ROI 回本约束下回流人数最大</b>的最优现金系数。<b style="color:var(--red)">第 1 层用户与非好友列表（名单外）用户均发 5⭐</b>（不发现金）、三臂一致。</div></div>
     <div class="grid3">
       <div class="card" style="padding:16px">
         <div class="tagp blue" style="margin-bottom:10px">方案 A · 基准现金</div>
         <table style="font-size:11.5px">
           <thead><tr><th>层</th><th>档位(元)</th><th>数量</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>0</td><td class="num">0</td></tr>
+            <tr><td>1<span style="font-size:10px;color:var(--tx3)">+名单外</span></td><td>发 5★</td><td class="num">现金0</td></tr>
             <tr><td>2</td><td>2/4/6</td><td class="num">4000×3</td></tr>
             <tr><td>3</td><td>6/8/10</td><td class="num">1000×3</td></tr>
             <tr><td>4</td><td>10/20/30</td><td class="num">400×3</td></tr>
@@ -285,7 +285,7 @@
         <table style="font-size:11.5px">
           <thead><tr><th>层</th><th>档位(元)</th><th>数量</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>0</td><td class="num">0</td></tr>
+            <tr><td>1<span style="font-size:10px;color:var(--tx3)">+名单外</span></td><td>发 5★</td><td class="num">现金0</td></tr>
             <tr><td>2</td><td>2/2/4</td><td class="num">800×3</td></tr>
             <tr><td>3</td><td>4/6/8</td><td class="num">200×3</td></tr>
             <tr><td>4</td><td>8/16/24</td><td class="num">80×3</td></tr>
@@ -299,7 +299,7 @@
         <table style="font-size:11.5px">
           <thead><tr><th>层</th><th>档位(元)</th><th>数量</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>0</td><td class="num">0</td></tr>
+            <tr><td>1<span style="font-size:10px;color:var(--tx3)">+名单外</span></td><td>发 5★</td><td class="num">现金0</td></tr>
             <tr><td>2</td><td>2/6/8</td><td class="num">800×3</td></tr>
             <tr><td>3</td><td>8/10/12</td><td class="num">200×3</td></tr>
             <tr><td>4</td><td>12/24/36</td><td class="num">80×3</td></tr>
@@ -309,7 +309,7 @@
         </table>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--tx3);margin-top:10px">档位金额为两人瓜分（各得一半），按登录平台发 Q币(QQ)/现金(微信)；各臂份数独立扣减与熔断、互不挤占；好友落层由数据侧 <code>tier</code>(1~5) 产出，层内档位由先绑先得决定。此 5 层×3 档为<b>实验期现金口径</b>，与 7 层为不同实验分组配置。</p>
+    <p style="font-size:12px;color:var(--tx3);margin-top:10px">档位金额为两人瓜分（各得一半），按登录平台发 Q币(QQ)/现金(微信)；各臂份数独立扣减与熔断、互不挤占；好友落层由数据侧 <code>tier</code>(1~5) 产出，层内档位由先绑先得决定。第 1 层用户与名单外用户均发 5★(现金0)、三臂一致；此 5 层×3 档为<b>实验期现金口径</b>，与 7 层为不同实验分组配置。</p>
   </section>
 
   <!-- 流程 -->
