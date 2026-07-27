@@ -194,9 +194,9 @@
       <div class="callout key"><div class="ci">!</div><div><b>5★ 保底：</b><span class="hl">任意流失好友</span>回归绑定（不论是否在推荐名单内），双方各得 5★，发起人自己也得 5★。</div></div>
     </div>
     <div class="grid3" style="margin-top:14px">
-      <div class="card" style="padding:18px"><div class="tagp blue">谁能参与</div><p style="font-size:13px;color:var(--tx2);margin-top:9px"><b style="color:var(--tx)">流失车手</b>：以 OPENID 计 <span class="hl">距今满 30 天未登录</span>（滚动，每人各自算）；<b style="color:var(--red)">回流=流失后再登录</b>，同 OPENID 多角色只算一个，不看 roleId/uid；服务端裁决。</p></div>
-      <div class="card" style="padding:18px"><div class="tagp red">邀请上限</div><p style="font-size:13px;color:var(--tx2);margin-top:9px">邀请人最多绑定 <b style="color:var(--red)">30 名</b> 好友；被邀请方<b style="color:var(--red)">仅可绑 1 个</b>口令码、首次绑定才领奖。</p></div>
-      <div class="card" style="padding:18px"><div class="tagp gold">发放规则</div><p style="font-size:13px;color:var(--tx2);margin-top:9px"><b style="color:var(--gold)">QQ 发 Q币、微信发现金</b>；现金先绑先得、总预算封顶；星星发起人封顶 90★。</p></div>
+      <div class="card" style="padding:18px"><div class="tagp blue">谁能参与</div><p style="font-size:13px;color:var(--tx2);margin-top:9px"><b style="color:var(--tx)">流失车手</b>：以 OPENID 计 <span class="hl">2026.6.28–7.27 未登录</span> 且 <span class="hl">注册≤2026.6.28</span>（固定窗口）；<b style="color:var(--red)">回流=流失后再登录</b>，同 OPENID 多角色只算一个，不看 roleId/uid；服务端裁决。</p></div>
+      <div class="card" style="padding:18px"><div class="tagp red">邀请上限</div><p style="font-size:13px;color:var(--tx2);margin-top:9px">总邀请上限 <b style="color:var(--red)">60 人</b>（最多得 <b style="color:var(--gold)">300★</b>）；每人最多为 <b style="color:var(--red)">1 个好友</b>助力、被邀请方<b style="color:var(--red)">仅可绑 1 个</b>口令码、首次绑定才领奖。</p></div>
+      <div class="card" style="padding:18px"><div class="tagp gold">发放规则</div><p style="font-size:13px;color:var(--tx2);margin-top:9px"><b style="color:var(--gold)">QQ 发 Q币、微信发现金</b>；现金先绑先得、总预算封顶；星星发起人封顶 300★。</p></div>
     </div>
   </section>
 
@@ -214,7 +214,7 @@
         <ul style="list-style:none;margin-top:10px;font-size:13px;color:var(--tx2)">
           <li style="padding:5px 0">剩余星星 ★200 + 口令码明细入口</li>
           <li style="padding:5px 0">星星兑换商城（5 件商品）</li>
-          <li style="padding:5px 0">专属邀请码 + 剩余绑定次数 <b style="color:var(--blue)">29/30</b></li>
+          <li style="padding:5px 0">专属邀请码 + 剩余绑定次数 <b style="color:var(--blue)">59/60</b></li>
           <li style="padding:5px 0">口令邀请 / 输入口令</li>
         </ul>
       </div>
@@ -250,7 +250,7 @@
       <div class="grid3" style="margin-top:14px">
         <div class="callout key" style="font-size:12.5px"><div class="ci">½</div><div><b>两人瓜分：</b>面额邀请人与好友各得一半（20元→各10元）</div></div>
         <div class="callout warn" style="font-size:12.5px"><div class="ci">▤</div><div><b>先绑先得：</b>各层份数即库存，抢完即止，¥15万封顶熔断</div></div>
-        <div class="callout key" style="font-size:12.5px"><div class="ci">★</div><div><b>星星封顶：</b>名单外走5★保底，发起人累计封顶 90★</div></div>
+        <div class="callout key" style="font-size:12.5px"><div class="ci">★</div><div><b>星星封顶：</b>名单外走5★保底，发起人累计封顶 300★（60人×5★）</div></div>
       </div>
     </div>
 
@@ -354,7 +354,7 @@
         <div class="act"><div class="t"><span class="step">2</span>非流失玩家点「输入口令」</div>不满足流失车手条件</div>
         <div class="arrow">→</div>
         <div class="fb">拦截并提示
-          <div class="pop red">您不是流失车手（近 30 天内登录过游戏），不可输入友情口令哦~</div></div>
+          <div class="pop red">您不是流失车手（2026年6月28日-7月27日未登录过游戏 且 注册早于该日期才可参与），不可输入友情口令哦~</div></div>
       </div>
 
       <div class="ipair">
@@ -419,7 +419,7 @@
       <div class="apirow"><code>/recommend-list</code><span class="m get">GET</span><span>推荐好友（取最新每日名单批次；含 friendReturnStar）</span></div>
       <div class="apirow"><code>/code/bind</code><span class="m post">POST</span><span>绑定（流失+首绑+限1码+次数；名单外→5★保底）</span></div>
       <div class="apirow"><code>/bind/verify</code><span class="m post">POST</span><span>发放前三重绑定关系校验，全通过才发放</span></div>
-      <div class="apirow"><code>/star/claim</code><span class="m post">POST</span><span>领星星（推荐卡领取后好友移除；累计封顶90★）</span></div>
+      <div class="apirow"><code>/star/claim</code><span class="m post">POST</span><span>领星星（推荐卡领取后好友移除；累计封顶300★）</span></div>
       <div class="apirow"><code>/redpacket/claim</code><span class="m post">POST</span><span>领现金/Q币（本人一半，QQ发Q币/微信发现金）</span></div>
       <div class="apirow"><code>/mall/exchange</code><span class="m post">POST</span><span>星星兑换（二次确认后调用，校验单人限次）</span></div>
     </div>
@@ -458,7 +458,7 @@
         </div>
       </div>
       <div class="grid3" style="margin-top:12px">
-        <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">① 好友绑定关系</b>有效关系链好友 + 满足流失定义（按 OPENID 流失满30天，不看 roleId/uid）</div>
+        <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">① 好友绑定关系</b>有效关系链好友 + 满足流失定义（按 OPENID 固定窗口6.28–7.27未登录且注册≤6.28，不看 roleId/uid）</div>
         <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">② 邀请码绑定关系</b>邀请码归属 + 首次绑定 + 仅绑1码 + 邀请人次数未满30</div>
         <div class="st off" style="background:var(--panel2)"><b style="color:var(--blued)">③ 现金-邀请码关系</b>应发金额/层级份数有库存 + 预算未熔断 + bindId 与金额一一对应</div>
       </div>
@@ -473,7 +473,7 @@
       <div>
         <div class="risk"><div class="dot"></div><div>资格由服务端裁决、<b style="color:var(--blue)">分层由数据侧产出</b>，前端不判定</div></div>
         <div class="risk"><div class="dot"></div><div><b style="color:var(--blue)">限绑 1 次</b>：returnOpenid 唯一，历史已绑不再产生可领奖绑定</div></div>
-        <div class="risk"><div class="dot"></div><div><b style="color:var(--blue)">30 次 / 各层份数 / 90★ 原子扣减</b>，防并发超发，预算封顶熔断</div></div>
+        <div class="risk"><div class="dot"></div><div><b style="color:var(--blue)">60 次 / 各层份数 / 300★ 原子扣减</b>，防并发超发，预算封顶熔断</div></div>
       </div>
       <div>
         <div class="risk"><div class="dot"></div><div>现金两人平分同一 <b style="color:var(--blue)">bindId</b> 关联，账务一致、幂等</div></div>
@@ -512,9 +512,9 @@
           <tr><td>4</td><td>5 绑定钻石</td><td>固定道具奖励（1★，单人限 15 次）</td></tr>
           <tr><td>5</td><td>实验组别 A/B</td><td><span class="tagp blue">数据侧分组与对照</span>，前端仅透传</td></tr>
           <tr><td>6</td><td>分享拉起</td><td>微信账号拉微信、QQ 账号拉 QQ</td></tr>
-          <tr><td>7</td><td>名单外好友 & 星星上限</td><td>任意流失好友回归双方各 5★、发起人也得；<b>发起人封顶 90★</b></td></tr>
+          <tr><td>7</td><td>名单外好友 & 星星上限</td><td>任意流失好友回归双方各 5★、发起人也得；总邀请 <b>60 人</b>、<b>发起人封顶 300★</b></td></tr>
           <tr><td>8</td><td>数据存储与发放校验</td><td>流失名单每日增量落库；发放前<b>三重绑定关系校验</b>全通过才发现金/Q币</td></tr>
-          <tr><td>9</td><td>回流判定维度</td><td><b style="color:var(--red)">以 OPENID 流失满 30 天判回流</b>，同 OPENID 多角色只算一个单位，禁用 roleId/uid</td></tr>
+          <tr><td>9</td><td>回流判定维度</td><td><b style="color:var(--red)">以 OPENID 固定窗口6.28–7.27未登录且注册≤6.28判回流</b>，同 OPENID 多角色只算一个单位，禁用 roleId/uid</td></tr>
         </tbody>
       </table>
       <div class="callout warn" style="margin-top:14px;font-size:12.5px"><div class="ci">!</div><div><b>唯一待定：</b>现金/Q币的实名合规链路对接方，需评审时点名负责团队；其余规则已定稿。</div></div>
